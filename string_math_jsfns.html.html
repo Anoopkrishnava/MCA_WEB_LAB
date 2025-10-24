@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String and Math Operations</title>
+</head>
+<body>
+    <h1>String and Math Operations using JavaScript</h1>
+
+    <h2>String Operations</h2>
+    <label>Enter First String: </label>
+    <input type="text" id="str1"><br><br>
+    <label>Enter Second String: </label>
+    <input type="text" id="str2"><br><br>
+
+    <button onclick="toLower()">Change to Lowercase</button>
+    <button onclick="toUpper()">Change to Uppercase</button>
+    <button onclick="firstUpper()">First Letter Uppercase</button>
+    <button onclick="concatenate()">Concatenate</button>
+
+    <p id="stringResult"></p>
+
+    <hr>
+
+    <h2>Arithmetic Operations</h2>
+    <label>Enter First Number: </label>
+    <input type="number" id="num1"><br><br>
+    <label>Enter Second Number: </label>
+    <input type="number" id="num2"><br><br>
+
+    <button onclick="add()">Addition</button>
+    <button onclick="subtract()">Subtraction</button>
+    <button onclick="multiply()">Multiplication</button>
+    <button onclick="divide()">Division</button>
+    <button onclick="power()">Power (num1^num2)</button>
+    <button onclick="squareRoot()">Square Root (num1)</button>
+
+    <p id="mathResult"></p>
+
+    <script>
+        // String Functions
+        function toLower() {
+            let s1 = document.getElementById("str1").value;
+            let s2 = document.getElementById("str2").value;
+            document.getElementById("stringResult").innerHTML =
+                "Lowercase Strings: " + s1.toLowerCase() + ", " + s2.toLowerCase();
+        }
+
+        function toUpper() {
+            let s1 = document.getElementById("str1").value;
+            let s2 = document.getElementById("str2").value;
+            document.getElementById("stringResult").innerHTML =
+                "Uppercase Strings: " + s1.toUpperCase() + ", " + s2.toUpperCase();
+        }
+
+        function firstUpper() {
+            let s1 = document.getElementById("str1").value;
+            let s2 = document.getElementById("str2").value;
+
+            function capitalize(str) {
+                if (str.length === 0) return "";
+                return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+            }
+
+            document.getElementById("stringResult").innerHTML =
+                "First Letter Uppercase: " + capitalize(s1) + ", " + capitalize(s2);
+        }
+
+        function concatenate() {
+            let s1 = document.getElementById("str1").value;
+            let s2 = document.getElementById("str2").value;
+            document.getElementById("stringResult").innerHTML =
+                "Concatenated String: " + s1.concat(" ", s2);
+        }
+
+        // Math Functions
+        function add() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("mathResult").innerHTML = "Addition: " + (n1 + n2);
+        }
+
+        function subtract() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("mathResult").innerHTML = "Subtraction: " + (n1 - n2);
+        }
+
+        function multiply() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("mathResult").innerHTML = "Multiplication: " + (n1 * n2);
+        }
+
+        function divide() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            if (n2 === 0) {
+                document.getElementById("mathResult").innerHTML = "Division by zero not allowed!";
+            } else {
+                document.getElementById("mathResult").innerHTML = "Division: " + (n1 / n2);
+            }
+        }
+
+        function power() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            let n2 = parseFloat(document.getElementById("num2").value);
+            document.getElementById("mathResult").innerHTML = "Power (n1^n2): " + Math.pow(n1, n2);
+        }
+
+        function squareRoot() {
+            let n1 = parseFloat(document.getElementById("num1").value);
+            if (n1 < 0) {
+                document.getElementById("mathResult").innerHTML = "Square root of negative number is not real!";
+            } else {
+                document.getElementById("mathResult").innerHTML = "Square Root of first number: " + Math.sqrt(n1);
+            }
+        }
+    </script>
+</body>
+</html>
