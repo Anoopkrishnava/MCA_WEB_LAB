@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background Color</title>
+    <script>
+        // Function to change background color
+        function changeColor() {
+            // Array of colors to switch between
+            var colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "lightblue"];
+            
+            // Get a random index
+            var randomIndex = Math.floor(Math.random() * colors.length);
+            
+            // Change background color of body
+            document.body.style.backgroundColor = colors[randomIndex];
+        }
+
+        // Event handling: add function to button click
+        window.onload = function() {
+            document.getElementById("colorButton").addEventListener("click", changeColor);
+        };
+    </script>
+</head>
+<body>
+    <h2>Click the button to change background color</h2>
+    <button id="colorButton">Change Color</button>
+</body>
+</html>
