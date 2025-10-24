@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calendar Generator</title>
+</head>
+<body>
+  <h2>Calendar Generator</h2>
+  <label for="year">Enter Year:</label>
+  <input type="number" id="year" placeholder="e.g., 2025">
+  <button onclick="generateCalendar()">Generate</button>
+
+  <div id="calendar"></div>
+
+  <script>
+    function generateCalendar() {
+      var year = document.getElementById("year").value;
+      var calendarDiv = document.getElementById("calendar");
+      calendarDiv.innerHTML = ""; // Clear previous calendar
+
+      if (year === "" || year < 1) {
+        alert("Please enter a valid year!");
+        return;
+      }
+
+      var months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+      for (var month = 0; month < 12; month++) {
+        // Display month name
+        var monthName = document.createElement("h3");
+        monthName.textContent = months[month] + " " + year;
+        calendarDiv.appendChild(monthName);
+
+        // Create table for month
+        var table = document.createElement("table");
+        table.border = "1";
+        table.cellPadding = "5";
+        table.cellSpacing = "0";
+
+        // Create header row for days
+        var headerRow = document.createElement("tr");
+        for (var d = 0; d < 7; d++) {
+          var th = document.createElement("th");
+          th.textContent = days[d];
+          headerRow.appendChild(th);
+        }
+        table.appendChild(headerRow);
+
+        // Get first day and total days in month
+        var firstDay = new Date(year, month, 1).getDay();
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        var date = 1;
+
+        // 6 rows for possible weeks
+        for (var i = 0; i < 6; i++) {
+          var row = document.createElement("tr");
+
+          for (var j = 0; j < 7; j++) {
+            var cell = document.createElement("td");
+            if (i === 0 && j < firstDay) {
+              cell.textContent = "";
+            } else if (date > daysInMonth) {
+              break;
+            } else {
+              cell.textContent = date;
+              date++;
+            }
+            row.appendChild(cell);
+          }
+
+          table.appendChild(row);
+        }
+
+        calendarDiv.appendChild(table);
+        calendarDiv.appendChild(document.createElement("br"));
+      }
+    }
+  </script>
+</body>
+</html>
