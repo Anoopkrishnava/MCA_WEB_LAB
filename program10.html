@@ -1,0 +1,34 @@
+
+<html>
+<head>
+  <title>Mouseover Event Example</title>
+</head>
+<body>
+
+  <h2>Move your mouse over the text below:</h2>
+
+  
+  <p id="originalText"
+     onMouseOver="showContent()"
+     onMouseOut="hideContent()">
+     Hover the mouse here to display new content.
+  </p>
+
+  
+  <div id="displayArea"></div>
+
+  <script>
+    function showContent() {
+      
+      document.getElementById("displayArea").innerHTML =
+        "<h3>This is new text displayed using JavaScript!</h3>" +
+        "<img src='js.jpg' width='150' height='150' alt='JavaScript Logo'>";
+    }
+
+    function hideContent() {
+      document.getElementById("displayArea").innerHTML = "";
+    }
+  </script>
+
+</body>
+</html>
