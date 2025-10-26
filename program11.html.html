@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=|, initial-scale=1.0">
+    <title>JOB APPLICATION</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: aqua;">
+    <center>
+        <marquee behavior="alternate" scrollamount="10" OnMouseOver=this.stop(); OnMouseOut=this.start();>
+            <h1 style="color: red;">WELCOME TO FRESHERS WORLD!!!!</h1>
+        </marquee>
+
+        <form onsubmit="return validateForm()">
+            <table border="2" style="background-color:aqua">
+                <tr>
+                    <td>Name</td> <!-- mandatory -->
+                    <td>
+                        <input type="text" id="name">
+                        <span id="nameError" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Age</td>
+                    <td colspan="2">
+                        <select>
+                            <option value="18-25">18-25</option>
+                            <option value="26-36">26-36</option>
+                            <option value="37-45">37-45</option>
+                            <option value="46-55">46-55</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Password</td> <!-- mandatory -->
+                    <td>
+                        <input type="password" id="password">
+                        <span id="passwordError" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Re-enter Password</td> <!-- mandatory -->
+                    <td>
+                        <input type="password" id="repassword">
+                        <span id="repasswordError" class="error"></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td rowspan="6">Select your security question</td>
+                <tr>
+                <tr><td><input type="radio" id="s1" name="security">What is your pet name</td></tr>    
+                <tr><td><input type="radio" id="s2" name="security">Who is your best friend</td></tr>   
+                <tr><td><input type="radio" id="s3" name="security">What is your favorite color</td></tr>   
+                <tr><td><input type="radio" id="s4" name="security">Who is your favourite teacher</td></tr>  
+                </tr>
+
+                <tr>
+                    <td>Answer to the question</td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <tr>
+                    <td>Languages known</td>
+                    <td>
+                        <input type="checkbox" name="malayalam">Malayalam
+                        <input type="checkbox" name="english">English
+                        <input type="checkbox" name="hindi">Hindi
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Phone Number</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <th>Home</th>
+                                <th>Office</th>
+                            </tr>
+                            <tr>
+                                <td><input type="number"></td>
+                                <td><input type="number"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Upload CV</td>
+                    <td><input type="file" name="choose file"></td>
+                </tr>
+
+                <tr>
+                    <td><center><input type="reset" name="reset"></center></td>
+                    <td><center><input type="submit" name="submit"></center></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var password = document.getElementById("password").value.trim();
+            var repassword = document.getElementById("repassword").value.trim();
+
+            // Clear previous error messages
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("passwordError").innerHTML = "";
+            document.getElementById("repasswordError").innerHTML = "";
+
+            var valid = true;
+
+            if (name === "") {
+                document.getElementById("nameError").innerHTML = "Name is required!";
+                valid = false;
+            }
+
+            if (password === "") {
+                document.getElementById("passwordError").innerHTML = "Password is required!";
+                valid = false;
+            }
+
+            if (repassword === "") {
+                document.getElementById("repasswordError").innerHTML = "Please re-enter your password!";
+                valid = false;
+            } else if (password !== "" && repassword !== password) {
+                document.getElementById("repasswordError").innerHTML = "Passwords do not match!";
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+</html>
